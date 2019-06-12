@@ -1,0 +1,20 @@
+<form #form="ngForm" (submit)="login()" novalidate>
+
+  <input type="email" name="email"
+  #loginEmail="ngModel" [(ngModel)]="user.username" placeholder="Email" required>
+  <p *ngIf="loginEmail.invalid && loginEmail.touched">
+    Casilla Obligatoria **
+  </p>
+  <input type="password" name="password"
+  #loginPassword="ngModel" [(ngModel)]="user.password" placeholder="Password" required>
+  <p *ngIf="loginPassword.invalid && loginPassword.touched">
+    Casilla Obligatoria **
+  </p>
+  <input type="checkbox" name="remember" [(ngModel)]="rememberMe">
+  <button [disabled]="form.invalid">
+    Inicio de Sesión
+  </button>
+  <p *ngIf="error">
+    {{error}}
+  </p>
+</form>
